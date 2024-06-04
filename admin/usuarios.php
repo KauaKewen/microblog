@@ -5,7 +5,7 @@ require_once "../inc/funcoes-usuarios.php";
 /* Chamando a função que carrega/lista/lê os usuários e guardando em variável o array que ela retorna */
 $listaDeUsuarios = lerUsuarios($conexao);
 ?>
-<pre><?=var_dump($listaDeUsuarios)?></pre>
+
 
 <div class="row">
 	<article class="col-12 bg-white rounded shadow my-1 py-4">
@@ -34,6 +34,7 @@ $listaDeUsuarios = lerUsuarios($conexao);
 
 				<tbody>
 
+<?php foreach($listaDeUsuarios as $usuario){ ?>
 					<tr>
 						<td> Nome... </td>
 						<td> E-mail... </td>
@@ -51,6 +52,7 @@ $listaDeUsuarios = lerUsuarios($conexao);
 						</td>
 					</tr>
 
+<?php } ?>
 				</tbody>                
 			</table>
 	</div>
