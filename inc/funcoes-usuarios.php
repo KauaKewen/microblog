@@ -37,4 +37,10 @@ function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo){
     mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
 }
 
+function removerUsuario($conexao, $id){
+    $sql = "DELETE FROM usuarios WHERE id = $id";
+    
+    mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
+}
+
 ?>
