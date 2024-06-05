@@ -43,4 +43,12 @@ function removerUsuario($conexao, $id){
     mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
 }
 
+
+function buscaUsuario($conexao, $email){
+    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+    $resultado = mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
+
+    return mysqli_fetch_assoc($resultado);
+}
+
 ?>
