@@ -4,7 +4,7 @@ require "inc/funcoes-sessao.php";
 require "inc/funcoes-usuarios.php"; 
 
 /* Mensagens de feedback */
-if(isset($_GET['campos-obrigatorios'])){
+if(isset($_GET['campos_obrigatorios'])){
 	$mensagem = "Preencha e-mail e senha";
 } elseif(isset($_GET['dados_incorretos'])){
 	$mensagem = "Dados incorretos, verifique e tente novamente";
