@@ -1,6 +1,12 @@
 <?php
 require_once "conecta.php";
 
+
+function formataData($data){
+    return date("d/m/Y H:i", strtotime($data));
+}
+
+
 function upload($arquivo){
     /* Array para validação dos tipos permitidos */
     $tiposValidos = ["image/png", "image/jpeg", "image/gif", "image/svg+xml"];
@@ -34,7 +40,20 @@ function inserirNoticia($conexao, $titulo, $texto, $resumo, $nomeImagem, $usuari
 }
 
 
-function lerNoticias($conexao){}
+function lerNoticias($conexao, $idUsuario, $tipoUsuario){
+    $sql = "SELECT
+     noticias.id,
+     noticias.titulo, 
+     noticias.data,
+     usuarios.nome
+     FROM noticias JOIN usuarios
+     ON noticias.usuario_id = usuarios.id 
+     ORDER BY data DESC";
+
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+}
 
 
 function lerUmaNoticia($conexao){}
