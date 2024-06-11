@@ -44,12 +44,12 @@ $listaDeNoticias = lerNoticias($conexao, $idUsuario, $tipoUsuario);
 
 				<tbody>
 
-				<?php foreach($listaDeNoticias as $noticias){ ?>
+				<?php foreach($listaDeNoticias as $noticia){ ?>
 					<tr>
-                        <td> <?=$noticias['titulo']?> </td>
-                        <td> <?=formataData($noticias['data'])?> </td>
+                        <td> <?=$noticia['titulo']?> </td>
+                        <td> <?=formataData($noticia['data'])?> </td>
 						<?php if($tipoUsuario == 'admin'){ ?>
-                        <td> <?=$noticias['nome']?> </td>
+                        <td> <?=$noticia['nome']?> </td>
 						<?php } ?>.
 						<td class="text-center">
 							<a class="btn btn-warning" 
