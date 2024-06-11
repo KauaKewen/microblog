@@ -65,10 +65,43 @@ function lerNoticias($conexao, $idUsuario, $tipoUsuario){
 }
 
 
-function lerUmaNoticia($conexao){}
+function lerUmaNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario){
+    if($tipoUsuario == 'admin'){
+        // Pode carregar/ver qualquer notícia
+        $sql = "SELECT * FROM noticias WHERE id = $idNoticia";
+    } else {
+        // Pode carregar/ver SOMENTE SUA notícia(basta saber qual notícia e qual usuário)
+        $sql = "SELECT * FROM noticias WHERE id = $idNoticia AND usuario_id = $idUsuario";
+    }
+
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    return mysqli_fetch_assoc($resultado);
+}
 
 
-function atualizarNoticia($conexao){}
+function atualizarNoticia($conexao, $titulo, $texto, $resumo, $imagem, $idNoticia, $idUsuario, $tipoUsuario){
+
+    if($tipoUsuario == 'admin'){
+        /* Pode atualizar QUALQUER notícia (basta saber qual) */
+        $sql = "UPDATE noticias SET 
+        titulo = '$titulo',
+        texto = '$texto',
+        resumo = '$resumo',
+        imagem = '$imagem'
+        WHERE id = $idNoticia"; //PERIGO!💀
+    } else {
+        /* Pode atualizar SOMENTE suas notícias (basta saber qual notícia e qual usuário) */
+        $sql = "UPDATE noticias SET 
+        titulo = '$titulo',
+        texto = '$texto',
+        resumo = '$resumo',
+        imagem = '$imagem'
+        WHERE id = $idNoticia AND usuario_id = $idUsuario"; //PERIGO!💀
+    }
+
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+}
 
 
 function excluirNoticia($conexao){}
