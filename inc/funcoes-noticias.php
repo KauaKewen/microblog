@@ -54,7 +54,7 @@ function lerNoticias($conexao, $idUsuario, $tipoUsuario){
         ORDER BY data DESC";
     } else {
         // Editor pode ver SOMENTE o DELE/DELA
-        $sql = "SELECT titulo, data, id";
+        $sql = "SELECT titulo, data, id FROM noticias WHERE  usuario_id = $idUsuario ORDER BY data DESC";
     }
 
    
