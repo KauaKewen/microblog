@@ -138,8 +138,7 @@ function lerNoticiaCompleta($conexao, $id){
         usuarios.nome
         FROM noticias JOIN usuarios
         ON noticias.usuario_id = usuarios.id 
-        WHERE noticias.id = $id
-        ORDER BY data DESC";
+        WHERE noticias.id = $id";
 
         $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
         
