@@ -104,4 +104,10 @@ function atualizarNoticia($conexao, $titulo, $texto, $resumo, $imagem, $idNotici
 }
 
 
-function excluirNoticia($conexao){}
+function excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario){
+    if($tipoUsuario == 'admin'){
+        $sql = "DELETE FROM noticias WHERE id = $idNoticia";
+    } else {
+        $sql = "DELETE FROM noticias WHERE id = $idNoticia AND usuario_id = $idUsuario";
+    }
+}
