@@ -5,7 +5,7 @@ require_once "../inc/funcoes-sessao.php";
 verificandoAcesso();
 
 
-$idNoticia = $_GET['id'];
+$idNoticia = (int)$_GET['id'];
 
 $idUsuario = $_SESSION['id'];
 
